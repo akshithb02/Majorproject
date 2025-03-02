@@ -23,7 +23,7 @@ st.write("Upload an image to check for malware classification.")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an image file", type=["png", "jpg", "jpeg", "webp"])
-
+uploaded_file = uploaded_file.reshape(-1, 64, 64, 3)  # Ensure correct batch dimension
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True)
